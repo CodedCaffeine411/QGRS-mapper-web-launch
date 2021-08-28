@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Bhaskar's Database</title>
+    <link rel="shortcut icon" href="picture/favicon.ico" />
+    <!-- Bootstrap Styles-->
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    <!-- FontAwesome Styles-->
+    <link href="css/font-awesome.css" rel="stylesheet" />
+    <!-- Custom Styles-->
+    <link href="css/custom-styles.css" rel="stylesheet" />
+    <!-- Google Fonts-->
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <!-- Bootstrap Js -->
+    <script src="bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+
+    <!-- Metis Menu Js -->
+    <script src="js/jquery.metisMenu.js"></script>
+    <script src="js/custom-scripts.js"></script>
+
+    <!-- charts -->
+    <script src="js/chart/highcharts.js"></script>
+    <script src="js/chart/annotations.js"></script>
+    <script src="js/chart/exporting.js"></script>
+    <script src="js/chart/series-label.js"></script>
+    <script src="js/chart/streamgraph.js"></script>
+
+    <link href="css/animate.css" rel='stylesheet' type='text/css' />
+
+    <script type="text/javascript" src="js/jquery-ui.js"></script>
+    <link href="css/jquery-ui.css" rel='stylesheet' />
+    <style>
+        #QuickSearch:focus {
+            border-color: #F36A5A;
+            box-shadow: inset 0 1px 1px #F36A5A, 0 0 8px #F36A5A;
+        }
+        
+        #lnc2cancer1,
+        #lnc2cancer2 {
+            color: #fff;
+        }
+        
+        #lnc2cancer1_1,
+        #lnc2cancer2_1 {
+            background-color: #fe7463;
+            border-radius: 8px;
+        }
+        
+        #lnc2cancer1_1:hover,
+        #lnc2cancer2_1:hover {
+            background-color: #d14d40;
+        }
+        
+        .btn:hover {
+            color: #fff;
+        }
+        
+        #NewFeature p {
+            text-align: justify;
+            padding-top: 0px;
+        }
+        
+        #quickbutton {
+            background-color: #ffb6a9;
+            border-color: #ffb6a9;
+        }
+        
+        #quickbutton:hover {
+            background-color: #F36A5A;
+            border-color: #F36A5A;
+        }
+        
+        map area {
+            outline: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrapper">
+        <nav class="navbar navbar-default top-navbar" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <span class="sr-only">Lnc2Cancer 3.0</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html" style="padding:13px 13px;"><img src='picture/title1.png' style="max-height: 44px;"></a>
+                <div id="sideNav">
+                    <i style="font-size: 20px;margin: 12px 0 0;" class="fa fa-exchange icon" aria-hidden="true"></i>
+                </div>
+            </div>
+            <ul class="nav navbar-top-links navbar-right" style="margin-right:20px;">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                        <i class="fa fa-envelope fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-messages">
+                        <li>
+                            <a href="mailto:krish.gupta@iitgn.ac.in">
+                                <div>
+                                    <strong>Krish Gupta</strong>
+                                </div>
+                                <div>krish.gupta@iitgn.ac.in</div>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-messages -->
+                </li>
+                <li>
+                    <a href="download.html"><i class="fa fa-download fa-fw"></i></a>
+                </li>
+                <li>
+                    <a href="help.html"><i class="fa fa-question fa-fw"></i></a>
+                </li>
+            </ul>
+        </nav>
+        <!--/. NAV TOP  -->
+        <nav class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+                    <div>
+                        <p style="padding:10px;color:#fff;font-size:13px;line-height: 20px;">Lnc2Cancer 3.0: an updated recourse for experimentally supported cancer-lncRNA or circRNA associations and web tools.
+                        </p>
+                    </div>
+
+                    <li>
+                        <a href="index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>&nbsp;Home</a>
+                    </li>
+                    <li>
+                        <a href="browse.jsp"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>&nbsp;Browse</a>
+                    </li>
+                    <li>
+                        <a href="#"> <span class="glyphicon glyphicon-search" aria-hidden="true"></span>&nbsp;Search<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="search_general.html">General Search</a>
+                            </li>
+                            <li>
+                                <a href="search_advanced.html">Advanced Search</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="singlecell.jsp"><span class="glyphicon glyphicon-leaf" aria-hidden="true"></span>&nbsp;Single Cell Web Tools</a>
+                    </li>
+                    <li>
+                        <a href="analysis.jsp"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>&nbsp;RNA-seq Web Tools</a>
+                    </li>
+                    <li>
+                        <a href="statistic.html"><span class="glyphicon glyphicon-list" aria-hidden="true"></span>&nbsp;Statistic</a>
+                    </li>
+                    <li>
+                        <a href="download.html"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>&nbsp;Download</a>
+                    </li>
+                    <li>
+                        <a href="help.html"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>&nbsp;Help</a>
+                    </li>
+                </ul>
+            </div>
+            <div style="margin-top:15px;">
+                <div id="lnc2cancer1_1" style="margin: 0 auto;text-align: center;font-size: 15px;width:90%;padding:3px 0px;">
+                    <a id="lnc2cancer1" href="http://bio-bigdata.hrbmu.edu.cn/lnc2cancer1.0/">
+            	 Lnc2Cancer 1.0
+            	</a>
+                </div>
+                <div id="lnc2cancer2_1" style="margin: 0 auto;margin-top:10px;padding:3px 0px;text-align: center;font-size: 15px;width:90%;">
+                    <a id="lnc2cancer2" href="http://www.bio-bigdata.net/lnc2cancer2.0/index.html">
+            	 Lnc2Cancer 2.0
+            	</a>
+                </div>
+            </div>
+            <div style="margin-top:15px;padding-left:25px;">
+                <p style="font-size:16px;font-weight:777;margin-top:0px;"><span style="color:#F36A5A;">10,303</span>
+                    <span style="color:#fff;">entries</span></p>
+                <p style="font-size:16px;font-weight:777;margin-top:0px;"><span style="color:#F36A5A;">2,659</span>
+                    <span style="color:#fff;">lncRNAs</span></p>
+                <p style="font-size:16px;font-weight:777;margin-top:0px;"><span style="color:#F36A5A;">743</span>
+                    <span style="color:#fff;">circRNAs</span></p>
+                <p style="font-size:16px;font-weight:777;margin-top:0px;"><span style="color:#F36A5A;">216</span>
+                    <span style="color:#fff;">cancer subtypes</span></p>
+            </div>
+        </nav>
+        <!-- /. NAV SIDE  -->
+
+        <div id="page-wrapper">
+            <div class="header wow bounceInUp" style="padding-top: 25px;">
+                <div class="panel panel-primary" style="border-color: #EDEDED;">
+                    <div class="panel-heading" style="font-size:20px;background-color: #F36A5A;border-color: #ff8875;">
+                        <b>Welcome to Lnc2Cancer 3.0</b>
+                    </div>
+                    <div class="panel-body">
+                        <p style="text-align: justify;">Lnc2Cancer, is a manually curated database that provides comprehensive experimentally supported associations between lncRNA or circRNA and human cancer. The current version of Lnc2Cancer documents 10,303 entries of associations
+                            between 2,659 human lncRNAs, 743 circRNAs and 216 human cancer subtypes through review of more than 1,5000 published papers. Lnc2Cancer also provides experimentally supported regulatory mechanism (microRNA, Transcription factor,
+                            variant, methylation and enhancer), biological function (cell growth, apoptosis, autophagy, Epithelial mesenchymal transformation, immune and coding ability) and clinical application (metastasis, recurrence, circulating, drug-resistant
+                            and prognostic) of lncRNAs and circRNAs in human cancer. Especially, an interactive analysis platform including RNA and single cell sequencing expression data is developed to help users explore lncRNAs in cancers with a standard
+                            processing pipeline.</p>
+                    </div>
+                    <div style="padding:0 20px 20px 20px;">
+                        <form action="search_general_result.jsp" method="post">
+                            <h4 style="margin-top:0px;padding-top:0px;"><strong>Quick Search</strong></h4>
+                            <div class="input-group" style="width:90%;margin:0 auto;">
+                                <input id="QuickSearch" name="searchName" type="text" class="form-control input-lg" placeholder=" lncRNA / circRNA / Cancer" style="border-width:2px;border-color:#ffb6a9;">
+                                <span class="input-group-btn">
+          			    <button id="quickbutton" class="btn btn-default" type="submit" onclick="return search()" style="height: 46px;font-size: 18px;">Search</button>
+          			  </span>
+                            </div>
+                            <div>
+                                <p style="margin-left:5%;"><b>e.g.</b> lncRNA: "
+                                    <a style="color:#37BC9B;cursor:pointer;" onClick="document.getElementById('QuickSearch').value='MALAT1'">
+                                        <font><strong>MALAT1</strong></font>
+                                    </a> "&nbsp;&nbsp;&nbsp;circRNA: "
+                                    <a style="color:#37BC9B;cursor:pointer;" onClick="document.getElementById('QuickSearch').value='circHIPK3'">
+                                        <font><strong>circHIPK3</strong></font>
+                                    </a> "&nbsp;&nbsp;&nbsp;Cancer: "
+                                    <a style="color:#37BC9B;cursor:pointer" onClick="document.getElementById('QuickSearch').value='breast cancer'">
+                                        <font><strong>breast cancer</strong></font>
+                                    </a> "
+                                </p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- header -->
+            <div id="page-inner">
+                <!-- /. ROW  -->
+                <div class="row wow bounceInRight">
+                    <div class="col-sm-12">
+                        <div class="panel panel-info" style="border-color: #EDEDED;">
+                            <div class="panel-heading" style="font-size: 18px;">
+                                Flow Chart
+                            </div>
+                            <div class="panel-body">
+                                <img src="picture/home2.png" alt="" id="chart1" style="width:100%;" border="0" usemap="#Map" />
+                                <map name="Map" onfocus="blur(this);">
+                              <area shape="circle" coords="1970,762,46" href="browse_search.jsp?functionName=recurrence&RNAtype=circRNA" />
+                              <area shape="circle" coords="1852,760,46" href="browse_search.jsp?functionName=recurrence&RNAtype=lncRNA" />
+                              <area shape="circle" coords="1550,787,46" href="browse_search.jsp?functionName=metastasis&RNAtype=lncRNA" />
+                              <area shape="circle" coords="1669,790,46" href="browse_search.jsp?functionName=metastasis&RNAtype=circRNA" />
+                              <area shape="circle" coords="1546,560,46" href="browse_search.jsp?functionName=circulating&RNAtype=lncRNA" />
+                              <area shape="circle" coords="1665,561,46" href="browse_search.jsp?functionName=circulating&RNAtype=circRNA" />
+                              <area shape="circle" coords="1974,453,46" href="browse_search.jsp?functionName=drug&RNAtype=circRNA" />
+                              <area shape="circle" coords="1855,452,46" href="browse_search.jsp?functionName=drug&RNAtype=lncRNA" />
+                              <area shape="circle" coords="1664,291,46" href="browse_search.jsp?functionName=survival&RNAtype=circRNA" />
+                              <area shape="circle" coords="1545,290,46" href="browse_search.jsp?functionName=survival&RNAtype=lncRNA" />
+                              <area shape="circle" coords="849,287,46" href="browse_search.jsp?functionName=Coding_ability&RNAtype=lncRNA" />
+                              <area shape="circle" coords="968,288,46" href="browse_search.jsp?functionName=Coding_ability&RNAtype=circRNA" />
+                              <area shape="circle" coords="1158,449,46" href="browse_search.jsp?functionName=EMT&RNAtype=lncRNA" />
+                              <area shape="circle" coords="1277,451,46" href="browse_search.jsp?functionName=EMT&RNAtype=circRNA" />
+                              <area shape="circle" coords="969,559,46" href="browse_search.jsp?functionName=autophagy&RNAtype=circRNA" />
+                              <area shape="circle" coords="849,557,46" href="browse_search.jsp?functionName=autophagy&RNAtype=lncRNA" />
+                              <area shape="circle" coords="972,787,46" href="browse_search.jsp?functionName=immune&RNAtype=circRNA" />
+                              <area shape="circle" coords="853,784,46" href="browse_search.jsp?functionName=immune&RNAtype=lncRNA" />
+                              <area shape="circle" coords="1156,758,46" href="browse_search.jsp?functionName=cell_growth&RNAtype=lncRNA" />
+                              <area shape="circle" coords="1275,759,46" href="browse_search.jsp?functionName=cell_growth&RNAtype=circRNA" />
+                              <area shape="circle" coords="599,753,46" href="browse_search.jsp?functionName=variant&RNAtype=circRNA" />
+                              <area shape="circle" coords="481,751,46" href="browse_search.jsp?functionName=variant&RNAtype=lncRNA" />
+                              <area shape="circle" coords="177,779,46" href="browse_search.jsp?functionName=miRNA&RNAtype=lncRNA" />
+                              <area shape="circle" coords="295,781,46" href="browse_search.jsp?functionName=miRNA&RNAtype=circRNA" />
+                              <area shape="circle" coords="173,549,46" href="browse_search.jsp?functionName=methylation&RNAtype=lncRNA" />
+                              <area shape="circle" coords="291,550,46" href="browse_search.jsp?functionName=methylation&RNAtype=circRNA" />
+                              <area shape="circle" coords="603,451,46" href="browse_search.jsp?functionName=TF&RNAtype=circRNA" />
+                              <area shape="circle" coords="484,450,46" href="browse_search.jsp?functionName=TF&RNAtype=lncRNA" />
+                              <area shape="circle" coords="286,287,46" href="browse_search.jsp?functionName=enhancer&RNAtype=circRNA" />
+                              <area shape="circle" coords="167,285,46" onfocus="blur(this);" href="browse_search.jsp?functionName=enhancer&RNAtype=lncRNA" />
+                           </map>
+                            </div>
+                            <div class="panel-footer" style="background-color: #ffb6a9;border-top: 1px solid #F36A5A;border-bottom: 1px solid #F36A5A;">
+                                Click to browse interested cancer-associated lncRNAs and circRNAs.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <!-- my chart -->
+                    <div class="col-sm-6 wow slideInDown" id="mychart" style="height:730px;">
+                    </div>
+                    <div class="col-sm-6 wow slideInDown" id="NewFeature">
+                        <div class="panel panel-default" style="padding-bottom: 10px;height:730px;">
+                            <div class="panel-body">
+                                <h4 style="padding-top:0px;margin-top: 0px;"><b>New Features</b></h4>
+                                <hr style="width: 140px;border:none;margin: 20px 0px 20px -5px;padding-left:0px;border-top:5px dotted #fe7463;" />
+                                <p><i style="color:#fe7463;" class=" fa fa-bookmark"></i> Exceeding nearly 4500 lncRNA-cancer entries over the previous version. The current release recruits 9,254 lncRNA-cancer associations with 2,659 lncRNAs and 216 cancer
+                                    subtypes.
+                                </p>
+                                <p><i style="color:#fe7463;" class=" fa fa-bookmark"></i> Newly adding about 1,049 experimentally supported circRNA-cancer associations with 743 circRNAs and 70 human cancer subtypes.
+                                </p>
+                                <p><i style="color:#fe7463;" class=" fa fa-bookmark"></i> Newly adding experimentally supported regulatory mechanisms section of cancer-related lncRNAs and circRNAs including microRNA, Transcription factor, variant, methylation
+                                    and enhancer.
+                                </p>
+                                <p><i style="color:#fe7463;" class=" fa fa-bookmark"></i> Appending the experimentally supported biological function section of cancer-related lncRNAs and circRNAs including cell growth, apoptosis, autophagy, Epithelial mesenchymal
+                                    transformation, immune and coding ability.
+                                </p>
+                                <p><i style="color:#fe7463;" class=" fa fa-bookmark"></i> Adding experimentally supported clinical application section of cancer-related lncRNAs and circRNAs including metastasis, recurrence, circulating, drug-resistance and
+                                    prognosis.
+                                </p>
+                                <p><i style="color:#fe7463;" class=" fa fa-bookmark"></i> Newly providing an interactive analysis platform for users to compute and visualization interested lncRNAs in cancers.</p>
+                                <p><i style="color:#fe7463;" class=" fa fa-bookmark"></i> Newly adding a single cell analysis platform for exploring lncRNAs in cancers.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top: 15px;">
+                    <div class="col-sm-6 wow pulse">
+                        <div class="panel panel-default">
+                            <div class="panel-heading"><a id="index_singlecell" href="singlecell.jsp">Single Cell Web Tools</a></div>
+                            <div class="panel-body">
+                                <div id="carousel-example-generic1" class="carousel slide center-block" data-ride="carousel">
+                                    <!-- Indicators -->
+                                    <ol class="carousel-indicators">
+                                        <li data-target="#carousel-example-generic1" data-slide-to="0" class="active"></li>
+                                        <li data-target="#carousel-example-generic1" data-slide-to="1"></li>
+                                        <li data-target="#carousel-example-generic1" data-slide-to="2"></li>
+                                    </ol>
+
+                                    <!-- Wrapper for slides -->
+                                    <div class="carousel-inner" role="listbox">
+                                        <div class="item active">
+                                            <img src="picture/singlecell1.png" alt="...">
+                                            <div class="carousel-caption"></div>
+                                        </div>
+                                        <div class="item">
+                                            <img src="picture/singlecell2.png" alt="...">
+                                            <div class="carousel-caption"></div>
+                                        </div>
+                                        <div class="item">
+                                            <img src="picture/singlecell3.png" alt="...">
+                                            <div class="carousel-caption"></div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Controls -->
+                                    <a class="left carousel-control" href="#carousel-example-generic1" role="button" data-slide="prev">
+                                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                    <a class="right carousel-control" href="#carousel-example-generic1" role="button" data-slide="next">
+                                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                        <span class="sr-only">Next</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6 wow pulse">
+                        <div class="panel panel-default">
+                            <div class="panel-heading"><a id="index_analysis" href="analysis.jsp">RNA-seq Web Tools</a></div>
+                            <div class="panel-body">
+                                <div id="carousel-example-generic2" class="carousel slide center-block" data-ride="carousel">
+                                    <!-- Indicators -->
+                                    <ol class="carousel-indicators">
+                                        <li data-target="#carousel-example-generic2" data-slide-to="0" class="active"></li>
+                                        <li data-target="#carousel-example-generic2" data-slide-to="1"></li>
+                                        <li data-target="#carousel-example-generic2" data-slide-to="2"></li>
+                                        <li data-target="#carousel-example-generic2" data-slide-to="3"></li>
+                                        <li data-target="#carousel-example-generic2" data-slide-to="4"></li>
+                                        <li data-target="#carousel-example-generic2" data-slide-to="5"></li>
+                                        <li data-target="#carousel-example-generic2" data-slide-to="6"></li>
+                                    </ol>
+
+                                    <!-- Wrapper for slides -->
+                                    <div class="carousel-inner" role="listbox">
+                                        <div class="item active">
+                                            <img src="picture/a1_1.png" alt="...">
+                                            <div class="carousel-caption">
+                                            </div>
+                                        </div>
+                                        <div class="item">
+                                            <img src="picture/a2.png" alt="...">
+                                            <div class="carousel-caption"></div>
+                                        </div>
+                                        <div class="item">
+                                            <img src="picture/a3_1.png" alt="...">
+                                            <div class="carousel-caption"></div>
+                                        </div>
+                                        <div class="item">
+                                            <img src="picture/a4_1.png" alt="...">
+                                            <div class="carousel-caption"></div>
+                                        </div>
+                                        <div class="item">
+                                            <img src="picture/a5_1.png" alt="...">
+                                            <div class="carousel-caption"></div>
+                                        </div>
+                                        <div class="item">
+                                            <img src="picture/a6_1.png" alt="...">
+                                            <div class="carousel-caption"></div>
+                                        </div>
+                                        <div class="item">
+                                            <img src="picture/a7.png" alt="...">
+                                            <div class="carousel-caption"></div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Controls -->
+                                    <a class="left carousel-control" href="#carousel-example-generic2" role="button" data-slide="prev">
+                                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                    <a class="right carousel-control" href="#carousel-example-generic2" role="button" data-slide="next">
+                                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                        <span class="sr-only">Next</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="col-sm-10" style="height:60px;">
+                            <p style="font-size: 20px;"><b>Please cite:</b></p>
+                            <a href="https://pubmed.ncbi.nlm.nih.gov/33219685/" target="_blank">
+                                <font color="#37BC9B" style="font-size: 16px;text-align: justify">
+                                    Lnc2Cancer 3.0: an updated resource for experimentally supported lncRNA/circRNA cancer associations and web tools based on RNA-seq and scRNA-seq data, (Nucleic Acids Research, 2020)</font>
+                            </a>
+                            <p style="margin-top: 10px;font-size: 16px;text-align: center;">2020, CopyRight &copy; College of Bioinformatics Science and Technology, Harbin Medical University, China.</p>
+                        </div>
+                        <div class="col-sm-2">
+                            <script type="text/javascript" src="//rf.revolvermaps.com/0/0/7.js?i=5sguvz7qsla&amp;m=0c&amp;
+                c=ff0000&amp;cr1=00fff6&amp;sx=0&amp;cw=ffffff&amp;cb=ff9e8e" async="async"></script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /. PAGE INNER  -->
+        </div>
+        <!-- /. PAGE WRAPPER  -->
+    </div>
+    <!-- /. WRAPPER  -->
+    <script>
+        function search() {
+            if (document.getElementById("QuickSearch").value == '') {
+                alert("please input lncRNA or Cancer Name!");
+                return false;
+            } else {
+                document.getElementById("loading1").style.display = "block";
+            }
+        }
+    </script>
+    <script>
+        var colors = Highcharts.getOptions().colors;
+        Highcharts.chart('mychart', {
+            chart: {
+                type: 'streamgraph',
+                marginBottom: 30,
+                zoomType: 'x'
+            },
+            // Make sure connected countries have similar colors
+            colors: [
+                colors[0],
+                colors[1],
+                colors[2],
+                colors[3],
+                colors[4],
+                // East Germany, West Germany and Germany
+                Highcharts.color(colors[5]).brighten(0.2).get(),
+                Highcharts.color(colors[5]).brighten(0.1).get(),
+                colors[5],
+                colors[6],
+                colors[7],
+                colors[8],
+                colors[9],
+                colors[0],
+                colors[1],
+                colors[3],
+                // Soviet Union, Russia
+                Highcharts.color(colors[2]).brighten(-0.1).get(),
+                Highcharts.color(colors[2]).brighten(-0.2).get(),
+                Highcharts.color(colors[2]).brighten(-0.3).get()
+            ],
+            title: {
+                floating: true,
+                align: 'center',
+                text: 'The development trend of cancer-related lncRNAs and circRNAs in recent years.<br>Go to our <a style="color:#37bc9b;" href="statistic.html">Statistics Page</a> to get more detailed information.',
+                style: {
+                    fontSize: '16px',
+                }
+            },
+            xAxis: {
+                maxPadding: 0,
+                type: 'category',
+                crosshair: true,
+                categories: [
+                    "2004", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020"
+                ],
+                labels: {
+                    align: 'left',
+                    reserveSpace: false,
+                    rotation: 270
+                },
+                lineWidth: 0,
+                margin: 20,
+                tickWidth: 0
+            },
+            yAxis: {
+                visible: false,
+                startOnTick: false,
+                endOnTick: false
+            },
+            legend: {
+                enabled: false
+            },
+            plotOptions: {
+                series: {
+                    label: {
+                        minFontSize: 5,
+                        maxFontSize: 15,
+                        style: {
+                            color: 'rgba(255,255,255,0.75)'
+                        }
+                    }
+                }
+            },
+            // Data parsed with olympic-medals.node.js
+            series: [{
+                "name": "circ",
+                "data": [
+                    0, 0, 0, 0, 0, 0, 0, 2, 2, 16, 50, 149, 420, 734, 1000
+                ]
+            }, {
+                "name": "lnc",
+                "data": [
+                    1, 1, 4, 3, 17, 46, 85, 217, 472, 781, 1257, 1978, 2913, 4066, 4516
+                ]
+            }, {
+                "name": "survival",
+                "data": [
+                    0, 0, 0, 0, 1, 6, 17, 56, 170, 321, 551, 929, 1410, 1893, 1960
+                ]
+            }, {
+                "name": "drug",
+                "data": [
+                    0, 0, 1, 1, 1, 2, 4, 15, 39, 81, 124, 231, 333, 460, 580
+                ]
+            }, {
+                "name": "circulating",
+                "data": [
+                    0, 0, 0, 0, 0, 0, 1, 3, 8, 28, 42, 58, 98, 130, 166
+                ]
+            }, {
+                "name": "metastasis",
+                "data": [
+                    0, 0, 0, 0, 6, 10, 20, 59, 144, 234, 405, 685, 964, 1230, 1272
+                ]
+            }, {
+                "name": "recurrence",
+                "data": [
+                    0, 0, 0, 0, 0, 4, 4, 2, 10, 32, 67, 78, 118, 137, 170
+                ]
+            }, {
+                "name": "immune",
+                "data": [
+                    0, 0, 0, 0, 0, 0, 1, 5, 12, 29, 37, 43, 77, 122, 148
+                ]
+            }, {
+                "name": "autophagy/apoptosis",
+                "data": [
+                    0, 0, 0, 0, 1, 7, 16, 43, 90, 151, 262, 491, 818, 1170, 1412
+                ]
+            }, {
+                "name": "coding",
+                "data": [
+                    0, 0, 0, 0, 1, 3, 1, 4, 6, 8, 5, 20, 21, 42, 60
+                ]
+            }, {
+                "name": "EMT",
+                "data": [
+                    0, 0, 0, 0, 0, 0, 1, 6, 22, 31, 77, 161, 273, 324, 386
+                ]
+            }, {
+                "name": "cell growth",
+                "data": [
+                    0, 0, 0, 1, 1, 4, 2, 16, 27, 54, 84, 172, 237, 269, 308
+                ]
+            }, {
+                "name": "enhancer",
+                "data": [
+                    0, 0, 0, 0, 0, 1, 3, 7, 19, 24, 35, 46, 64, 76, 124
+                ]
+            }, {
+                "name": "miRNA",
+                "data": [
+                    0, 0, 2, 2, 5, 10, 7, 19, 55, 112, 171, 278, 511, 883, 1042
+                ]
+            }, {
+                "name": "methylation",
+                "data": [
+                    0, 0, 0, 1, 4, 4, 8, 17, 37, 45, 57, 65, 86, 155, 158
+                ]
+            }, {
+                "name": "mutation",
+                "data": [
+                    0, 0, 0, 0, 2, 2, 6, 7, 18, 39, 59, 91, 94, 117, 152
+                ]
+            }],
+            exporting: {
+                sourceWidth: 800,
+                sourceHeight: 600
+            }
+        });
+
+        var defaultMaps = [
+            [1970, 762, 46],
+            [1852, 760, 46],
+            [1550, 787, 46],
+            [1669, 790, 46],
+            [1546, 560, 46],
+            [1665, 561, 46],
+            [1974, 453, 46],
+            [1855, 452, 46],
+            [1664, 291, 46],
+            [1545, 290, 46],
+            [849, 287, 46],
+            [968, 288, 46],
+            [1158, 449, 46],
+            [1277, 451, 46],
+            [969, 559, 46],
+            [849, 557, 46],
+            [972, 787, 46],
+            [853, 784, 46],
+            [1156, 758, 46],
+            [1275, 759, 46],
+            [599, 753, 46],
+            [481, 751, 46],
+            [177, 779, 46],
+            [295, 781, 46],
+            [173, 549, 46],
+            [291, 550, 46],
+            [603, 451, 46],
+            [484, 450, 46],
+            [286, 287, 46],
+            [167, 285, 46]
+        ];
+        var areas = document.querySelectorAll('area');
+        for (var m = 0; m < areas.length; m++) {
+            areas[m]
+        }
+        console.log(areas[0].coords);
+        console.log(areas.length);
+        // 图片地址
+        var img_url = 'picture/home1.png'
+
+        // 创建对象
+        var img = new Image()
+
+        // 改变图片的src
+        img.src = img_url
+
+        // 加载完成执行
+        img.onload = function() {
+            // 打印
+            var cuWidth = document.getElementById("chart1").offsetWidth;
+            var cp = cuWidth / img.width;
+            console.log("cp:" + cp);
+            console.log(document.body.clientWidth);
+            for (var i = 0; i < defaultMaps.length; i++) {
+                for (var n = 0; n < defaultMaps[i].length; n++) {
+                    console.log(defaultMaps[i][n]);
+                    defaultMaps[i][n] = defaultMaps[i][n] * cp;
+                    console.log(defaultMaps[i][n]);
+                }
+                areas[i].setAttribute('coords', defaultMaps[i]);
+            }
+
+        };
+    </script>
+    <script type="text/javascript" src="js/autocom.js"></script>
+    <script src="js/wow.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+</body>
+
+</html>
